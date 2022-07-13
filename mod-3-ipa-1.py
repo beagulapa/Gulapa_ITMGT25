@@ -139,25 +139,24 @@ def vigenere_cipher(message, key):
     else:
         mod = len(message) % len(key)
         num = len(message) // len(key)
-        new_key = ""
+        key2 = ""
         if mod == 0:
             for i in range (0,int(num)):
-                new_key += key
+                key2 += key
         else:
-            for i in range (0, int(num)):
-                new_key += key
-            for j in range(0, int(mod)):
-                new_key += key[j]
-        key = new_key
-    ans = ""
+            for i in range (0,int(num)):
+                key2 += key
+            for j in range(0,int(mod)):
+                key2 += key[j]
+        key = key2
+    ans = ''
     for i in range (0, len(key)):
-        if message[i] == " ":
-            ans += " "
+        if message[i] == ' ':
+            ans += ' '
+        elif ord(message[i]) + ord(key[i]) <= 155:
+            ans += chr(ord(message[i]) + ord(key[i])-65)
         else:
-            if ord(message[i]) + ord(key[i]) <= 155:
-                ans += chr (ord(message[i]) + ord(key[i]) - 65)
-            else:
-                ans += chr (ord(message[i]) + ord(key[i]) - 91)
+            ans += chr(ord(message[i]) + ord(key[i])-91)
     return ans
 
 def scytale_cipher(message, shift):
