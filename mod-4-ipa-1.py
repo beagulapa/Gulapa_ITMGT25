@@ -172,26 +172,26 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     start_list = []
-    for i in list(legs):
-        start_list = [i[0] for i in list(legs)]
+    for i in list(route_map):
+        start_list = [i[0] for i in list(route_map)]
         
     end_list = []
-    for i in list(legs):
-        end_list = [i[1] for i in list(legs)]
+    for i in list(route_map):
+        end_list = [i[1] for i in list(route_map)]
     
     num_list = []
-    for x in list(legs.values()):
-        num_list = [x['travel_time_mins'] for x in list(legs.values())]
+    for x in list(route_map.values()):
+        num_list = [x['travel_time_mins'] for x in list(route_map.values())]
         
     startind = start_list.index(first_stop)
     endind = end_list.index(second_stop)
     
     minutes = 0
     if first_stop == second_stop:
-        minutes = sum([t["travel_time_mins"] for t in legs.values()])
+        minutes = sum([t["travel_time_mins"] for t in route_map.values()])
     else:
-        if (first_stop,second_stop) in legs:
-            minutes = legs[(first_stop,second_stop)]['travel_time_mins']
+        if (first_stop,second_stop) in route_map:
+            minutes = route_map[(first_stop,second_stop)]['travel_time_mins']
         else:
             if startind < endind:
                 minutes = sum(num_list[startind:(endind+1)])
