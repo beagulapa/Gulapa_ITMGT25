@@ -44,26 +44,26 @@ def relationship_status(from_member, to_member, social_graph):
     try:
         if to_member not in social_graph[from_member]["following"]:
             if from_member in social_graph[to_member]["following"]:
-                print("followed by")
+                return "followed by"
             else:
-                print("no relationship")
+                return "no relationship"
         else:
             if from_member in social_graph[to_member]["following"]:
-                print("friends")
+                return "friends"
             else:
-                print("follower")
+                return "follower"
     #if insufficient user data
     except:
         if from_member in social_graph:
             if to_member in social_graph[from_member]["following"]:
-                print("follower")
+                return "follower"
             else:
-                print("no relationship")
+                return "no relationship"
         else:
             if from_member in social_graph[to_member]["following"]:
-                print("followed by")
+                return "followed by"
             else: 
-                print("no relationship")
+                return "no relationship"
 
 
 def tic_tac_toe(board):
