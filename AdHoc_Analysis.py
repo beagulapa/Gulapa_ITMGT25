@@ -175,6 +175,7 @@ tb1bar = tb1table.plot(kind='bar')
 plt.ylabel('Count of Each Item Sold')
 plt.title('Count of Each Item Sold Per Month')
 plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
+tb1bar.legend(loc=4)
 
 #tb2table
 tb2bar = tb2table.plot(kind='bar')
