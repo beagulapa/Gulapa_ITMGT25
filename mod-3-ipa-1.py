@@ -65,7 +65,14 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    return ''.join(chr(ord(char) + shift) for char in message)
+    text = ""
+    for ch in message:
+        if ch.isalpha():
+            final_letter=(chr((((ord(ch)-65+shift)%26)+65)))
+            text+= final_letter
+        else: 
+            text+=ch      
+    return text
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter. 
@@ -100,7 +107,7 @@ def shift_by_letter(letter, letter_shift):
         return letter
     elif (alphabet.index(letter)+alphabet.index(letter_shift))<26:
         return alphabet[alphabet.index(letter) + alphabet.index(letter_shift)]
-    elif (alphabet.index(letter)+shift)>=26:
+    elif (alphabet.index(letter)+letter_shift)>=26:
         return alphabet[(alphabet.index(letter)+alphabet.index(letter_shift))-26]
 
 def vigenere_cipher(message, key):
@@ -211,14 +218,15 @@ def scytale_cipher(message, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    while len(message) % shift != 0:
+    while len(message)%shift != 0:
         message += "_"
-        if len(message) % shift == 0:
+        if len(message)%shift == 0:
             break
+    cipher=""    
     for i in range(len(message)):
-        cipher = message[((i // shift) + (len(message) // shift) * (i % shift))]
-        for j in cipher.split():
-            print(j, end="")
+        message2 = message[((i // shift) + (len(message) // shift) * (i % shift))]
+        cipher+=message2
+    return cipher
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
